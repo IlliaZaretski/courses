@@ -1,6 +1,6 @@
-package com.example.courses.repository;
+package com.example.courses.classic.repository;
 
-import com.example.courses.model.Course;
+import com.example.courses.classic.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

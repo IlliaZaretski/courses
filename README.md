@@ -21,3 +21,15 @@ Acceptance Criteria:
 authentication to start with.
 - Few bare minimum details we need for reserving a class are - name(name of the member who
 is booking the class), date(date for which the member want to book a class)
+
+
+Deployment:
+1) Run MySQL database: docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql:8
+2) Run MongoDB database: docker run --name mongo -d -p 27017:27017 mongo:latest
+3) Go to the root project directory
+4) Run build and tests: ./gradlew build
+5) Run application: ./gradlew bootRun
+6) Use following URLs:
+- http://localhost:8080/courses and http://localhost:8080/bookings for classic Rest APIs
+- http://localhost:8080/pseudoreactive/courses for Pseudo-reactive API on top of non-reactive MySQL/JPA
+- http://localhost:8080/reactive/courses for fully Reactive API 

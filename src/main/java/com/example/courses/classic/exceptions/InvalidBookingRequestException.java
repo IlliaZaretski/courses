@@ -1,4 +1,4 @@
-package com.example.courses.controller.exceptions;
+package com.example.courses.classic.exceptions;
 
 public class InvalidBookingRequestException extends RuntimeException {
 

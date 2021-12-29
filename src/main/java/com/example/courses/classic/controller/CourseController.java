@@ -1,11 +1,11 @@
-package com.example.courses.controller.classic;
+package com.example.courses.classic.controller;
 
-import com.example.courses.controller.exceptions.EntityNotFoundException;
-import com.example.courses.model.Booking;
-import com.example.courses.model.Course;
-import com.example.courses.repository.CourseRepository;
-import org.springframework.beans.BeanUtils;
+import com.example.courses.classic.exceptions.EntityNotFoundException;
+import com.example.courses.classic.model.Booking;
+import com.example.courses.classic.model.Course;
+import com.example.courses.classic.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
@@ -36,6 +36,7 @@ public class CourseController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     Course createCourse(@RequestBody Course course) {
         return repository.save(course);
     }
@@ -52,13 +53,13 @@ public class CourseController {
                     course.setUpdatedAt(Timestamp.from(Instant.now()));
                     return repository.save(course);
                 })
-                .orElseGet(() -> repository.save(newCourse));
+                .orElseThrow(() -> new EntityNotFoundException("There is no Course with id " + id));
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteCourse(@PathVariable Long id) {
         repository.deleteById(id);
     }
-
 
 }

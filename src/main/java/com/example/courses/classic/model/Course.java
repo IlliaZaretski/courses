@@ -1,4 +1,4 @@
-package com.example.courses.model;
+package com.example.courses.classic.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

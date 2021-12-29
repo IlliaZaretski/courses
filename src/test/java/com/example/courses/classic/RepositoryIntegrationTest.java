@@ -1,23 +1,20 @@
-package com.example.courses;
+package com.example.courses.classic;
 
-import com.example.courses.model.Booking;
-import com.example.courses.model.Course;
-import com.example.courses.repository.BookingRepository;
-import com.example.courses.repository.CourseRepository;
-import org.assertj.core.api.InstanceOfAssertFactories;
+import com.example.courses.classic.model.Booking;
+import com.example.courses.classic.model.Course;
+import com.example.courses.classic.repository.BookingRepository;
+import com.example.courses.classic.repository.CourseRepository;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class CoursesRepositoryTests {
+class RepositoryIntegrationTest {
 
     @Autowired
     private CourseRepository courseRepository;
@@ -25,7 +22,6 @@ class CoursesRepositoryTests {
     @Autowired
     private BookingRepository bookingRepository;
 
-    @BeforeEach
     @AfterEach
     private void cleanDatabase() {
         courseRepository.deleteAllInBatch();

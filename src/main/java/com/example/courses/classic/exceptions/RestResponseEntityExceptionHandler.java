@@ -1,6 +1,5 @@
-package com.example.courses.controller.exceptions;
+package com.example.courses.classic.exceptions;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
@@ -35,11 +33,20 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ResponseBody
+    @ExceptionHandler(BookingAlreadyExistsException.class)
+    @ResponseStatus(BAD_REQUEST)
+    String requestValidationError(BookingAlreadyExistsException ex) {
+        return ex.getMessage();
+    }
+
+    @ResponseBody
     @ExceptionHandler({ConstraintViolationException.class})
     @ResponseStatus(BAD_REQUEST)
     String requestValidationError(ConstraintViolationException ex) {
-        ConstraintViolation violation = ex.getConstraintViolations().stream().findFirst().get();
-        return "Property '" + violation.getPropertyPath() + "' " + violation.getMessage() + ": " + violation.getInvalidValue();
+        final StringBuilder sb = new StringBuilder().append("Violations: \n");
+        ex.getConstraintViolations().forEach(violation -> sb.append("Property '").append(violation.getPropertyPath()).append("' ")
+                .append(violation.getMessage()).append(": ").append(violation.getInvalidValue()).append(" \n"));
+        return sb.toString();
     }
 
     @ResponseBody

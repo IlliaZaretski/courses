@@ -1,9 +1,8 @@
-package com.example.courses.model;
+package com.example.courses.classic.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
