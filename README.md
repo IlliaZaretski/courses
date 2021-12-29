@@ -23,7 +23,7 @@ authentication to start with.
 is booking the class), date(date for which the member want to book a class)
 
 
-Deployment:
+# Deployment
 1) Run MySQL database: docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql:8
 2) Run MongoDB database: docker run --name mongo -d -p 27017:27017 mongo:latest
 3) Go to the root project directory
