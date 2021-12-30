@@ -40,7 +40,7 @@ dependencies {
 	//Database
 	implementation 'org.flywaydb:flyway-core:8.2.3'
 	implementation 'mysql:mysql-connector-java:8.0.27'
-	implementation 'org.flywaydb:flyway-mysql:8.2.1'
+	implementation 'org.flywaydb:flyway-mysql:8.3.0'
 
 	//Tests
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
