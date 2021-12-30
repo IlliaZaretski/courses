@@ -38,7 +38,7 @@ public class Course extends BaseEntity {
 	@NotNull
 	private Integer capacity;
 
-	@OneToMany(mappedBy = "course")
+	@OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@JsonIgnore

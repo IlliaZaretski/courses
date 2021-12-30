@@ -2,11 +2,10 @@ package com.example.courses.classic;
 
 import com.example.courses.classic.exceptions.BookingAlreadyExistsException;
 import com.example.courses.classic.exceptions.InvalidBookingRequestException;
-import com.example.courses.classic.repository.CourseRepository;
-import com.example.courses.classic.service.BookingService;
 import com.example.courses.classic.model.Booking;
 import com.example.courses.classic.model.Course;
-import org.junit.jupiter.api.AfterEach;
+import com.example.courses.classic.repository.CourseRepository;
+import com.example.courses.classic.service.BookingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,11 +28,6 @@ class ServiceIntegrationTest {
     @Autowired
     private BookingService service;
 
-    @AfterEach
-    private void cleanDatabase() {
-        courseRepository.deleteAllInBatch();
-    }
-
     @Test
     void testBooking() {
         Course course = courseRepository.save(
@@ -53,7 +47,6 @@ class ServiceIntegrationTest {
         assertEquals("Booking for Course '" + booking.getCourse().getId() + "' and Date '" + booking.getBookingDate() + "' already completed", exception.getMessage());
 
         assertThat(service.createBooking(generateBooking(course, date.plusDays(1)))).isNotNull().extracting(Booking::getId).isNotNull();
-
     }
 
     private Booking generateBooking(Course course, LocalDate bookingDate) {

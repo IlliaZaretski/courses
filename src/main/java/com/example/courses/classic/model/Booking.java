@@ -27,7 +27,7 @@ public class Booking extends BaseEntity {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate bookingDate;
 
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "course_id", nullable = false)
 	@JsonIncludeProperties({"id", "title"})
 	private Course course;

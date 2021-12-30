@@ -25,7 +25,6 @@ class RepositoryIntegrationTest {
     @AfterEach
     private void cleanDatabase() {
         courseRepository.deleteAllInBatch();
-        bookingRepository.deleteAllInBatch();
     }
 
     @Test
@@ -58,6 +57,7 @@ class RepositoryIntegrationTest {
         bookingRepository.delete(b1);
 		assertThat(bookingRepository.findById(b1.getId())).isNotPresent();
 
+        //test cascade
         courseRepository.delete(course);
         assertThat(courseRepository.findById(course.getId())).isNotPresent();
         assertThat(bookingRepository.findById(b2.getId())).isNotPresent();
