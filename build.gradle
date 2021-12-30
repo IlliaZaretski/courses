@@ -25,11 +25,11 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.2'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.2'
-	implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.6.1'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.6.2'
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2:2.6.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux:2.6.1'
-	implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.1'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.2'
 
 	//Common
 	compileOnly 'org.projectlombok:lombok:1.18.22'
@@ -43,7 +43,7 @@ dependencies {
 	implementation 'org.flywaydb:flyway-mysql:8.3.0'
 
 	//Tests
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.2'
 	testImplementation 'io.projectreactor:reactor-test:3.4.13'
 	testCompileOnly 'org.projectlombok:lombok:1.18.22'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
