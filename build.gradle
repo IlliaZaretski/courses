@@ -7,10 +7,14 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
+	}
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 	}
 }
 
@@ -34,10 +38,9 @@ dependencies {
 	implementation 'org.zalando:logbook-spring-boot-starter:2.14.0'
 
 	//Database
-	runtimeOnly 'mysql:mysql-connector-java:8.0.25'
 	implementation 'org.flywaydb:flyway-core:8.2.3'
-	implementation "com.zaxxer:HikariCP:5.0.0"
-	implementation 'mysql:mysql-connector-java:8.0.25'
+	implementation 'mysql:mysql-connector-java:8.0.27'
+	implementation 'org.flywaydb:flyway-mysql:8.2.1'
 
 	//Tests
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
