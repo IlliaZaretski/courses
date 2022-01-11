@@ -13,11 +13,10 @@ import reactor.core.publisher.Mono;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/pseudoreactive/courses")
-public class CoursePseudoReactiveController {
+public final class CoursePseudoReactiveController {
 
     @Autowired
     private CourseRepository repository;
@@ -28,19 +27,19 @@ public class CoursePseudoReactiveController {
     }
 
     @GetMapping("/{id}")
-    Mono<Course> getCourse(@PathVariable Long id) {
+    Mono<Course> getCourse(@PathVariable final Long id) {
         return Mono.justOrEmpty(repository.findById(id))
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("There is no Course with id " + id)));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Mono<Course> createCourse(@RequestBody Course course) {
+    Mono<Course> createCourse(@RequestBody final Course course) {
         return Mono.just(repository.save(course));
     }
 
     @PutMapping("/{id}")
-    Mono<Course> updateCourse(@RequestBody Course newCourse, @PathVariable Long id) {
+    Mono<Course> updateCourse(@RequestBody final Course newCourse, @PathVariable final Long id) {
         return Mono.justOrEmpty(repository.findById(id))
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("There is no Course with id " + id)))
                 .flatMap(course -> {
@@ -56,7 +55,7 @@ public class CoursePseudoReactiveController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteCourse(@PathVariable Long id) {
+    void deleteCourse(@PathVariable final Long id) {
         repository.deleteById(id);
     }
 

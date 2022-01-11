@@ -27,7 +27,7 @@ import static org.mockito.Mockito.times;
 public class CoursePseudoReactiveControllerTest {
 
     @MockBean
-    CourseRepository repository;
+    private CourseRepository repository;
 
     @Autowired
     private WebTestClient webClient;

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookingService {
+public final class BookingService {
 
     @Autowired
     private CourseRepository courseRepository;
@@ -29,7 +29,7 @@ public class BookingService {
                 || booking.getBookingDate().isAfter(course.getEndDate()))
             throw new InvalidBookingRequestException("Booking date '" + booking.getBookingDate() + "' is out of Course dates: '" + course.getStartDate() + "' - '" + course.getEndDate() + "'");
 
-        if(bookingRepository.countByCourseAndBookingDate(booking.getCourse(), booking.getBookingDate()) >= course.getCapacity())
+        if (bookingRepository.countByCourseAndBookingDate(booking.getCourse(), booking.getBookingDate()) >= course.getCapacity())
             throw new BookingAlreadyExistsException(booking);
 
         return bookingRepository.save(booking);

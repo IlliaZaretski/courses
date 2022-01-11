@@ -21,25 +21,27 @@ import java.util.List;
 @Profile("main")
 class FixturesLoader {
 
-    private static final Logger log = LoggerFactory.getLogger(FixturesLoader.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FixturesLoader.class);
 
     @Bean
-    CommandLineRunner initDatabase(CourseRepository courseRepository, BookingRepository bookingRepository, CourseReactiveRepository courseReactiveRepository) {
+    CommandLineRunner initDatabase(final CourseRepository courseRepository,
+                                   final BookingRepository bookingRepository,
+                                   final CourseReactiveRepository courseReactiveRepository) {
 
         fillClassicDatabase(courseRepository, bookingRepository);
 
         fillReactiveDatabase(courseReactiveRepository);
 
         return args -> {
-            courseRepository.findAll().forEach(course -> log.info("Preloaded in MySQL: " + course));
-            bookingRepository.findAll().forEach(booking -> log.info("Preloaded in MySQL: " + booking));
-            courseReactiveRepository.findAll().toIterable().forEach(course -> log.info("Preloaded in Mongo: " + course));
+            courseRepository.findAll().forEach(course -> LOGGER.info("Preloaded in MySQL: " + course));
+            bookingRepository.findAll().forEach(booking -> LOGGER.info("Preloaded in MySQL: " + booking));
+            courseReactiveRepository.findAll().toIterable().forEach(course -> LOGGER.info("Preloaded in Mongo: " + course));
         };
     }
 
-    private void fillClassicDatabase(CourseRepository courseRepository, BookingRepository bookingRepository) {
+    private void fillClassicDatabase(final CourseRepository courseRepository, final BookingRepository bookingRepository) {
         if (!courseRepository.findByTitle("Test Course 1").isEmpty()) {
-            log.info("Fixtures already preloaded in MySQL");
+            LOGGER.info("Fixtures already preloaded in MySQL");
             return;
         }
 
@@ -57,9 +59,9 @@ class FixturesLoader {
         bookingRepository.save(Booking.builder().memberName("Member 5").bookingDate(LocalDate.now().plusDays(11)).course(course2).build());
     }
 
-    private void fillReactiveDatabase(CourseReactiveRepository courseReactiveRepository) {
+    private void fillReactiveDatabase(final CourseReactiveRepository courseReactiveRepository) {
         if (courseReactiveRepository.findByTitle("Test Course 1").toIterable().iterator().hasNext()) {
-            log.info("Fixtures already preloaded in Mongo");
+            LOGGER.info("Fixtures already preloaded in Mongo");
             return;
         }
         int capacity = 10;

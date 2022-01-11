@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bookings")
-public class BookingController {
+public final class BookingController {
 
     @Autowired
     private BookingRepository repository;
@@ -30,12 +30,12 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    Booking getBooking(@PathVariable Long id) {
+    Booking getBooking(@PathVariable final Long id) {
         return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no Booking with id " + id));
     }
 
     @GetMapping("/course/{courseId}")
-    List<Booking> getBookingsByCourseId(@PathVariable("courseId") Long courseId) {
+    List<Booking> getBookingsByCourseId(@PathVariable("courseId") final Long courseId) {
         Course course = new Course();
         course.setId(courseId);
         return repository.findByCourse(course);
@@ -43,13 +43,13 @@ public class BookingController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Booking createBooking(@Valid @RequestBody Booking booking) {
+    Booking createBooking(@Valid @RequestBody final Booking booking) {
         return bookingService.createBooking(booking);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    Booking updateBooking(@RequestBody Booking newBooking, @PathVariable Long id) {
+    Booking updateBooking(@RequestBody final Booking newBooking, @PathVariable final Long id) {
         return repository.findById(id)
                 .map(booking -> {
                     booking.setMemberName(newBooking.getMemberName());
@@ -62,7 +62,7 @@ public class BookingController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBooking(@PathVariable Long id) {
+    public void deleteBooking(@PathVariable final Long id) {
         repository.deleteById(id);
     }
 

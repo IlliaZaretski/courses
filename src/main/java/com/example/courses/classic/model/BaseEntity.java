@@ -19,6 +19,6 @@ public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    protected Long id;
+    private Long id;
 
 }

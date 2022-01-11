@@ -49,7 +49,7 @@ class ServiceIntegrationTest {
         assertThat(service.createBooking(generateBooking(course, date.plusDays(1)))).isNotNull().extracting(Booking::getId).isNotNull();
     }
 
-    private Booking generateBooking(Course course, LocalDate bookingDate) {
+    private Booking generateBooking(final Course course, final LocalDate bookingDate) {
         return Booking.builder().memberName("Member " + bookingDate.toString())
                         .bookingDate(bookingDate)
                         .course(course)

@@ -39,7 +39,7 @@ class RepositoryIntegrationTest {
                 .extracting(Course::getId).containsExactly(course.getId(), course2.getId());
 
         assertThat(courseRepository.findByDate(LocalDate.now().plusDays(2))).isNotEmpty().hasSize(1)
-                .extracting(Course::getId).containsExactly( course2.getId());
+                .extracting(Course::getId).containsExactly(course2.getId());
 
         courseRepository.delete(course);
         assertThat(courseRepository.findById(course.getId())).isNotPresent();
@@ -63,7 +63,7 @@ class RepositoryIntegrationTest {
         assertThat(bookingRepository.findById(b2.getId())).isNotPresent();
     }
 
-    private Course createCourse(int order) {
+    private Course createCourse(final int order) {
         Course course = courseRepository.save(
                 Course.builder().title("Test Course " + order).description("Test Desc " + order)
                         .startDate(LocalDate.now()).endDate(LocalDate.now()
@@ -74,7 +74,7 @@ class RepositoryIntegrationTest {
         return course;
     }
 
-    private Booking createBooking(Course course, int order) {
+    private Booking createBooking(final Course course, final int order) {
         Booking booking = bookingRepository.save(
                 Booking.builder().memberName("Member " + order)
                         .bookingDate(LocalDate.now().plusDays(order))

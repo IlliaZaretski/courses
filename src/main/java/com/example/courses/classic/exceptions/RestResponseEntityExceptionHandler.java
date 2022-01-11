@@ -11,13 +11,13 @@ import javax.validation.ConstraintViolationException;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @RestControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+public final class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler({EntityNotFoundException.class,
             EmptyResultDataAccessException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String entityNotFoundHandler(Exception ex) {
+    String entityNotFoundHandler(final Exception ex) {
         return ex.getMessage();
     }
 
@@ -25,21 +25,21 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler({MethodArgumentTypeMismatchException.class,
             InvalidBookingRequestException.class})
     @ResponseStatus(BAD_REQUEST)
-    String requestValidationError(Exception ex) {
+    String requestValidationError(final Exception ex) {
         return "Request is invalid: " + ex.getMessage();
     }
 
     @ResponseBody
     @ExceptionHandler(BookingAlreadyExistsException.class)
     @ResponseStatus(BAD_REQUEST)
-    String requestValidationError(BookingAlreadyExistsException ex) {
+    String requestValidationError(final BookingAlreadyExistsException ex) {
         return ex.getMessage();
     }
 
     @ResponseBody
     @ExceptionHandler({ConstraintViolationException.class})
     @ResponseStatus(BAD_REQUEST)
-    String requestValidationError(ConstraintViolationException ex) {
+    String requestValidationError(final ConstraintViolationException ex) {
         final StringBuilder sb = new StringBuilder().append("Violations: \n");
         ex.getConstraintViolations().forEach(violation -> sb.append("Property '").append(violation.getPropertyPath()).append("' ")
                 .append(violation.getMessage()).append(": ").append(violation.getInvalidValue()).append(" \n"));
@@ -49,7 +49,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ResponseBody
     @ExceptionHandler({RuntimeException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    String handleException(RuntimeException ex) {
+    String handleException(final RuntimeException ex) {
         return "Unknown error: " + ex.getMessage();
     }
 

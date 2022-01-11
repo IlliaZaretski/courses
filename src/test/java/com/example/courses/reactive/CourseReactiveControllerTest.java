@@ -26,7 +26,7 @@ import static org.mockito.Mockito.times;
 public class CourseReactiveControllerTest {
 
     @MockBean
-    CourseReactiveRepository repository;
+    private CourseReactiveRepository repository;
 
     @Autowired
     private WebTestClient webClient;

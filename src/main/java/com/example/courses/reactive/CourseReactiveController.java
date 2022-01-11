@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/reactive/courses")
-public class CourseReactiveController {
+public final class CourseReactiveController {
 
     @Autowired
     private CourseReactiveRepository repository;
@@ -23,19 +23,19 @@ public class CourseReactiveController {
     }
 
     @GetMapping("/{id}")
-    Mono<MongoCourse> getCourse(@PathVariable String id) {
+    Mono<MongoCourse> getCourse(@PathVariable final String id) {
         return repository.findById(id)
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("There is no Course with id " + id)));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Mono<MongoCourse> createCourse(@RequestBody MongoCourse course) {
+    Mono<MongoCourse> createCourse(@RequestBody final MongoCourse course) {
         return repository.save(course);
     }
 
     @PutMapping("/{id}")
-    Mono<MongoCourse> updateCourse(@RequestBody MongoCourse newCourse, @PathVariable String id) {
+    Mono<MongoCourse> updateCourse(@RequestBody final MongoCourse newCourse, @PathVariable final String id) {
         return repository.findById(id)
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("There is no Course with id " + id)))
                 .flatMap(course -> {
@@ -51,7 +51,7 @@ public class CourseReactiveController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteCourse(@PathVariable String id) {
+    void deleteCourse(@PathVariable final String id) {
         repository.deleteById(id);
     }
 
