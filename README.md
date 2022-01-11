@@ -1,9 +1,8 @@
 # Courses
-
 Demo project which allows business owners to manage their courses, classes, members, memberships etc.
 
-# Story - Create Classes
-As a studio owner i want to create classes for my studio so that my members can attend classes
+# Business cases
+1) As a studio owner I want to create classes for my studio so that my members can attend classes
 
 Acceptance Criteria:
 - Implement an API to create classes(`/courses`). Assume this api doesn't need to have any
@@ -13,8 +12,7 @@ capacity. For now, assume that there will be only one class per given day. Ex: I
 name pilates starts on 1st Dec and ends on 20th Dec, with capacity 10, that means Pilates
 has 20 classes and for each class the maximum capacity of attendance is 10.
 
-# Story - Book for a class
-As a member of a studio, I can book for a class, so that I can attend a class.
+2) As a member of a studio, I can book for a class, so that I can attend a class.
 
 Acceptance Criteria:
 - Implement an API endpoint (`/bookings`). Assume this api doesn't need to have any
@@ -22,6 +20,9 @@ authentication to start with.
 - Few bare minimum details we need for reserving a class are - name(name of the member who
 is booking the class), date(date for which the member want to book a class)
 
+# API specification
+Open API 3 definition available at http://localhost:8080/api-docs 
+Interactive API specification via Swagger UI: http://localhost:8080/swagger-ui.html
 
 # Deployment
 1) Run MySQL database: docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql:8

@@ -4,6 +4,7 @@ import com.example.courses.classic.exceptions.EntityNotFoundException;
 import com.example.courses.classic.model.Booking;
 import com.example.courses.classic.model.Course;
 import com.example.courses.classic.repository.CourseRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class CourseController {
         return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no Course with id " + id));
     }
 
+    @Operation(summary = "Get all bookings by Course id")
     @GetMapping("/{id}/bookings")
     List<Booking> getBookingsForCourse(@PathVariable Long id) {
         Course course = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no Course with id " + id));

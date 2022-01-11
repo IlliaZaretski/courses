@@ -26,6 +26,13 @@ dependencies {
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	implementation 'org.zalando:logbook-spring-boot-starter:2.14.0'
 
+	//Open API 3.0 via Swagger
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.4'
+	implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.4'
+	implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.6.4'
+	implementation 'org.springdoc:springdoc-openapi-hateoas:1.6.4'
+	implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.4'
+
 	//Database
 	implementation 'org.flywaydb:flyway-core:8.4.0'
 	implementation 'mysql:mysql-connector-java:8.0.27'
