@@ -45,7 +45,7 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.4'
 
 	//Database
-	implementation 'org.flywaydb:flyway-core:8.4.0'
+	implementation 'org.flywaydb:flyway-core:8.4.1'
 	implementation 'mysql:mysql-connector-java:8.0.27'
 	implementation 'org.flywaydb:flyway-mysql:8.4.1'
 
