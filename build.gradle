@@ -45,17 +45,17 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.4'
 
 	//Database
-	implementation 'org.flywaydb:flyway-core:8.4.0'
+	implementation 'org.flywaydb:flyway-core:8.4.1'
 	implementation 'mysql:mysql-connector-java:8.0.27'
-	implementation 'org.flywaydb:flyway-mysql:8.4.0'
+	implementation 'org.flywaydb:flyway-mysql:8.4.1'
 
 	//Tests
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.2'
-	testImplementation 'io.projectreactor:reactor-test:3.4.13'
+	testImplementation 'io.projectreactor:reactor-test:3.4.14'
 	testCompileOnly 'org.projectlombok:lombok:1.18.22'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testImplementation 'org.mockito:mockito-core:4.2.0'
-	testImplementation 'io.projectreactor:reactor-test:3.4.13'
+	testImplementation 'io.projectreactor:reactor-test:3.4.14'
 	testImplementation 'com.h2database:h2:2.0.206'
 }
 
