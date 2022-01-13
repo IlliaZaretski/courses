@@ -1,10 +1,10 @@
 package com.example.courses.classic.controller;
 
 import com.example.courses.classic.exceptions.EntityNotFoundException;
-import com.example.courses.classic.repository.BookingRepository;
-import com.example.courses.classic.service.BookingService;
 import com.example.courses.classic.model.Booking;
 import com.example.courses.classic.model.Course;
+import com.example.courses.classic.repository.BookingRepository;
+import com.example.courses.classic.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -3,10 +3,10 @@ package com.example.courses.classic.service;
 import com.example.courses.classic.exceptions.BookingAlreadyExistsException;
 import com.example.courses.classic.exceptions.EntityNotFoundException;
 import com.example.courses.classic.exceptions.InvalidBookingRequestException;
-import com.example.courses.classic.repository.BookingRepository;
-import com.example.courses.classic.repository.CourseRepository;
 import com.example.courses.classic.model.Booking;
 import com.example.courses.classic.model.Course;
+import com.example.courses.classic.repository.BookingRepository;
+import com.example.courses.classic.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

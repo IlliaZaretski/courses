@@ -8,16 +8,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 @Table(name = "courses")
 public class Course extends BaseEntity {
 
@@ -28,10 +29,12 @@ public class Course extends BaseEntity {
 
 	@Column(name = "start_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NonNull
 	private LocalDate startDate;
 
 	@Column(name = "end_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NonNull
 	private LocalDate endDate;
 
 	@Positive
@@ -43,9 +46,5 @@ public class Course extends BaseEntity {
 	@ToString.Exclude
 	@JsonIgnore
 	private Set<Booking> bookings;
-
-	@Column(name = "updated_at")
-	@JsonIgnore
-	private Timestamp updatedAt;
 
 }

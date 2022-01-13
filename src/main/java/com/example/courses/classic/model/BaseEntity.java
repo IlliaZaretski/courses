@@ -1,17 +1,12 @@
 package com.example.courses.classic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
-/**
- * Simple JavaBean domain object with an id property. Used as a base class for objects
- * needing this property.
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- */
 @MappedSuperclass
 @Data
 public class BaseEntity implements Serializable {
@@ -20,5 +15,13 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Long id;
+
+    @Column(name = "created_at")
+    @JsonIgnore
+    private Timestamp createdAt;
+
+    @Column(name = "updated_at")
+    @JsonIgnore
+    private Timestamp updatedAt;
 
 }
