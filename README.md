@@ -20,17 +20,30 @@ authentication to start with.
 - Few bare minimum details we need for reserving a class are - name(name of the member who
 is booking the class), date(date for which the member want to book a class)
 
-# API specification
-- Open API 3 definition available at http://localhost:8080/api-docs 
-- Interactive API specification via Swagger UI: http://localhost:8080/swagger-ui.html
+# Build
+1) Go to the root project directory
+2) Run build and tests: ./gradlew build
 
 # Deployment
-1) Run MySQL database: docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql:8
-2) Run MongoDB database: docker run --name mongo -d -p 27017:27017 mongo:latest
-3) Go to the root project directory
-4) Run build and tests: ./gradlew build
-5) Run application: ./gradlew bootRun
-6) Use following URLs:
+
+**Local + DB in Docker**
+1) Run MySQL database: docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8
+2) Run MongoDB database: docker run --name mongo -p 27017:27017 -d mongo:latest
+3) Run application: ./gradlew bootRun
+4) Use following URLs:
 - http://localhost:8080/courses and http://localhost:8080/bookings for classic Rest APIs
 - http://localhost:8080/pseudoreactive/courses for Pseudo-reactive API on top of non-reactive MySQL/JPA
 - http://localhost:8080/reactive/courses for fully Reactive API 
+
+**Fully dockerized with Docker Compose**
+1) Build the application image: docker image build -t courses .
+2) Run app containers: docker-compose up
+
+# API specification
+- Open API 3 definition available at http://localhost:8080/api-docs
+- Interactive API specification via Swagger UI: http://localhost:8080/swagger-ui.html
+
+- You can bypass Swagger and use these URLS directly:
+a) http://localhost:8080/courses and http://localhost:8080/bookings for classic Rest APIs
+b) http://localhost:8080/pseudoreactive/courses for Pseudo-reactive API on top of non-reactive MySQL/JPA
+c) http://localhost:8080/reactive/courses for fully Reactive API 

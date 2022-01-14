@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @RestController
@@ -19,7 +20,7 @@ public final class CourseReactiveController {
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     Flux<MongoCourse> getAllCourses() {
-        return repository.findAll(); //.delayElements(Duration.ofSeconds(2));
+        return repository.findAll().delayElements(Duration.ofMillis(500));
     }
 
     @GetMapping("/{id}")

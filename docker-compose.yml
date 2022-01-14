@@ -1,0 +1,39 @@
+version: "3"
+services:
+  courses:
+    image: courses:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - courses
+    environment:
+      - MYSQL_HOST=mysqlhost
+      - MONGODB_HOST=mongohost
+    depends_on:
+      - mysqlhost
+      - mongohost
+    command: dockerize -wait tcp://mysqlhost:3306 -wait tcp://mongohost:27017 -timeout 30s -wait-retry-interval 3s java -jar courses.jar
+
+  mysqlhost:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    networks:
+      - courses
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=courses
+    healthcheck:
+      test: nc -z localhost 3306
+
+  mongohost:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - courses
+    healthcheck:
+      test: nc -z localhost 27017
+
+networks:
+  courses:
