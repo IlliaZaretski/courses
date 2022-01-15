@@ -1,0 +1,4 @@
+ALTER TABLE courses DROP FOREIGN KEY courses_ibfk_1;
+ALTER TABLE courses DROP CONSTRAINT UQ_LocationID_ID;
+ALTER TABLE courses DROP COLUMN location_id;
+DROP TABLE IF EXISTS locations;
