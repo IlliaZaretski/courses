@@ -64,7 +64,7 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testImplementation 'org.mockito:mockito-core:4.2.0'
 	testImplementation 'io.projectreactor:reactor-test:3.4.14'
-	testImplementation 'com.h2database:h2:2.0.206'
+	testImplementation 'com.h2database:h2:2.1.210'
 }
 
 test {
