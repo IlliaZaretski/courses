@@ -54,7 +54,7 @@ dependencies {
 
 	//Database
 	implementation 'org.flywaydb:flyway-mysql:8.4.1'
-	implementation 'mysql:mysql-connector-java:8.0.27'
+	implementation 'mysql:mysql-connector-java:8.0.28'
 	implementation 'org.flywaydb:flyway-core:8.4.2'
 
 	//Tests
