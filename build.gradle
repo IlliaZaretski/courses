@@ -1,6 +1,6 @@
 buildscript {
 	dependencies {
-		classpath 'org.flywaydb:flyway-mysql:8.4.2'
+		classpath 'org.flywaydb:flyway-mysql:8.4.3'
 	}
 }
 
@@ -12,7 +12,7 @@ plugins {
 	id 'pmd'
 	id 'checkstyle'
 	id 'jacoco'
-	id 'org.flywaydb.flyway' version '8.4.1'
+	id 'org.flywaydb.flyway' version '8.4.3'
 }
 
 group = 'com.example'
@@ -46,14 +46,14 @@ dependencies {
 	implementation 'org.zalando:logbook-spring-boot-starter:2.14.0'
 
 	//Open API 3.0 via Swagger
-	implementation 'org.springdoc:springdoc-openapi-ui:1.6.4'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.5'
 	implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.4'
 	implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.6.4'
-	implementation 'org.springdoc:springdoc-openapi-hateoas:1.6.4'
+	implementation 'org.springdoc:springdoc-openapi-hateoas:1.6.5'
 	implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.4'
 
 	//Database
-	implementation 'org.flywaydb:flyway-mysql:8.4.1'
+	implementation 'org.flywaydb:flyway-mysql:8.4.3'
 	implementation 'mysql:mysql-connector-java:8.0.28'
 	implementation 'org.flywaydb:flyway-core:8.4.2'
 
