@@ -31,7 +31,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.3'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.3'
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.6.3'
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
