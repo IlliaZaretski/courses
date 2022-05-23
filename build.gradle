@@ -12,7 +12,7 @@ plugins {
 	id 'pmd'
 	id 'checkstyle'
 	id 'jacoco'
-	id 'org.flywaydb.flyway' version '8.4.3'
+	id 'org.flywaydb.flyway' version '8.5.11'
 }
 
 group = 'com.example'
@@ -64,7 +64,7 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testImplementation 'org.mockito:mockito-core:4.3.0'
 	testImplementation 'io.projectreactor:reactor-test:3.4.18'
-	testImplementation 'com.h2database:h2:2.1.210'
+	testImplementation 'com.h2database:h2:2.1.212'
 }
 
 test {
